@@ -1,12 +1,14 @@
 package com.codecool.jpaexample.model;
 
+import net.bytebuddy.implementation.bind.MethodDelegationBinder;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@Entity
+@Entity(name = "Student")
 public class Student {
 
     @Id
@@ -15,29 +17,39 @@ public class Student {
 
     private String name;
 
+    @Column(nullable = false, unique = true)
     private String email;
 
+    @Transient
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
 
     private long age;
 
     @OneToOne
+    @JoinColumn(name = "address_id")
     private Address address;
+
+    @ElementCollection
+    @CollectionTable(name = "Phone")
+    List<String> phoneNumbers = new ArrayList<>();
 
     public Student() {
     }
 
-    public Student(String name, String email, Date dateOfBirth) {
+    public Student(String name, String email, Date dateOfBirth, List<String> phoneNumbers) {
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.age = (Calendar.getInstance().getTimeInMillis() - dateOfBirth.getTime())
                 / (60L * 60L * 1000L * 24L * 365L);
+        this.phoneNumbers = phoneNumbers;
+
+
     }
 
-    public Student(String name, String email, Date dateOfBirth, Address address) {
-        this(name, email, dateOfBirth);
+    public Student(String name, String email, Date dateOfBirth, List<String> phoneNumbers, Address address) {
+        this(name, email, dateOfBirth, phoneNumbers);
         this.address = address;
     }
 
