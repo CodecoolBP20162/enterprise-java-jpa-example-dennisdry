@@ -73,3 +73,17 @@ drop table if exists Address cascade
 drop table if exists Klass cascade
 drop table if exists Phone cascade
 drop table if exists Student cascade
+alter table Phone drop constraint FK8p74wyfckl9p9p9d7h5y0a9ea
+alter table Student drop constraint FKf12myy73nsf6soln9xli8th80
+alter table Student drop constraint FKcg3mb593anls5mvb8iywiuwao
+drop table if exists Address cascade
+drop table if exists Klass cascade
+drop table if exists Phone cascade
+drop table if exists Student cascade
+alter table Phone drop constraint FK8p74wyfckl9p9p9d7h5y0a9ea
+alter table Student drop constraint FKf12myy73nsf6soln9xli8th80
+alter table Student drop constraint FKcg3mb593anls5mvb8iywiuwao
+drop table if exists Address cascade
+drop table if exists Klass cascade
+drop table if exists Phone cascade
+drop table if exists Student cascade

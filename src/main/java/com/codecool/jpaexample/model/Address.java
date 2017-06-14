@@ -15,8 +15,7 @@ public class Address {
     private String city;
     private String addr;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @OneToOne(mappedBy = "address")
     private Student student;
 
     public Address() {

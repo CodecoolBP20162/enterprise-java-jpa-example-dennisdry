@@ -27,7 +27,6 @@ public class Student {
     private long age;
 
     @OneToOne
-    @JoinColumn(name = "address_id")
     private Address address;
 
     @ElementCollection
