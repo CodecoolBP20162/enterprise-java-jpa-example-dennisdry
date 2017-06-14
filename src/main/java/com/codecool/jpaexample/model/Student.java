@@ -15,6 +15,9 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @ManyToOne
+    Klass klass;
+
     private String name;
 
     @Column(nullable = false, unique = true)
@@ -36,19 +39,18 @@ public class Student {
     public Student() {
     }
 
-    public Student(String name, String email, Date dateOfBirth, List<String> phoneNumbers) {
+    public Student(String name, String email, Date dateOfBirth, List<String> phoneNumbers, Klass klass) {
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.age = (Calendar.getInstance().getTimeInMillis() - dateOfBirth.getTime())
                 / (60L * 60L * 1000L * 24L * 365L);
         this.phoneNumbers = phoneNumbers;
-
-
+        this.klass = klass;
     }
 
-    public Student(String name, String email, Date dateOfBirth, List<String> phoneNumbers, Address address) {
-        this(name, email, dateOfBirth, phoneNumbers);
+    public Student(String name, String email, Date dateOfBirth, List<String> phoneNumbers, Address address, Klass klass) {
+        this(name, email, dateOfBirth, phoneNumbers, klass);
         this.address = address;
     }
 
